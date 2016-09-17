@@ -13,5 +13,8 @@ namespace PayByPhone.TestAssignment.FoodTrees
         public const string AWSAccessKey = "AWSAccessKey";
         public const string AWSSecretKey = "AWSSecretKey";
         public const string AWSRegion = "AWSRegion";
+        public const string CtorArgAWSAccessKey = "awsAccessKey";
+        public const string CtorArgAWSSecretKey = "awsSecretKey";
+        public const string CtorArgAWSRegion = "awsRegion";
     }
 }

@@ -187,6 +187,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -312,6 +313,10 @@
     <ProjectReference Include="..\PayByPhone.TestAssignment.FoodTrees.Models\PayByPhone.TestAssignment.FoodTrees.Models.csproj">
       <Project>{de4fd923-e2f8-49f2-a222-ee660c53e825}</Project>
       <Name>PayByPhone.TestAssignment.FoodTrees.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PayByPhone.TestAssignment.FoodTrees.Services\PayByPhone.TestAssignment.FoodTrees.Services.csproj">
+      <Project>{40f970e0-83aa-47d1-bec9-3bbaf195951c}</Project>
+      <Name>PayByPhone.TestAssignment.FoodTrees.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

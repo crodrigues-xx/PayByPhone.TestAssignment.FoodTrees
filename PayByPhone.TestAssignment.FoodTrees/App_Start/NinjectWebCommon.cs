@@ -1,16 +1,19 @@
+using System;
+using System.Web;
+
+using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+
+using Ninject;
+using Ninject.Web.Common;
+
+using PayByPhone.TestAssignment.FoodTrees.Models;
+using PayByPhone.TestAssignment.FoodTrees.Services;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(PayByPhone.TestAssignment.FoodTrees.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(PayByPhone.TestAssignment.FoodTrees.App_Start.NinjectWebCommon), "Stop")]
 
 namespace PayByPhone.TestAssignment.FoodTrees.App_Start
 {
-    using System;
-    using System.Web;
-
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
-    using Ninject;
-    using Ninject.Web.Common;
-
     public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
@@ -61,6 +64,10 @@ namespace PayByPhone.TestAssignment.FoodTrees.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IFoodSearch>().To<FoodSearchAmazonDynamo>()
+                .WithConstructorArgument(AppKeys.CtorArgAWSAccessKey, Constants.AWSAccessKey)
+                .WithConstructorArgument(AppKeys.CtorArgAWSSecretKey, Constants.AWSSecretKey)
+                .WithConstructorArgument(AppKeys.CtorArgAWSRegion, Constants.AWSRegion);
         }        
     }
 }

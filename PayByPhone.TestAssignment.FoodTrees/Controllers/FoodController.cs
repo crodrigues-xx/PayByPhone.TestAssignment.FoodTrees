@@ -22,24 +22,29 @@ namespace PayByPhone.TestAssignment.FoodTrees.Controllers
         }
 
         [HttpGet]
-        public string Get(string foodName)
+        public IList<FoodGarden> Get(string foodName)
         {
-            string sortHoistedFoodTreeVariety;
-            IList<string> excludedJurisdictions;
-            IList<string> excludedMapIds;
+            string sortHoistedFoodTreeVariety = null;
+
+            string excludedJurisdictionsString = null;
+            IList<string> excludedJurisdictions = null;
+
+            string excludedMapIdsString = null;
+            IList<string> excludedMapIds = null;
+
+            IList<FoodGarden> foodGardens = null;
 
             sortHoistedFoodTreeVariety = _config.Retrieve(AppKeys.SortHoistedFoodTreeVariety);
-            sortHoistedFoodTreeVariety = _config.Retrieve(AppKeys.ExcludedJurisdictions);
-            sortHoistedFoodTreeVariety = _config.Retrieve(AppKeys.ExcludedMapIds);
+            excludedJurisdictionsString = _config.Retrieve(AppKeys.ExcludedJurisdictions);
+            excludedMapIdsString = _config.Retrieve(AppKeys.ExcludedMapIds);
 
-            sortHoistedFoodTreeVariety = _config.Retrieve(AppKeys.AWSAccessKey);
-            sortHoistedFoodTreeVariety = _config.Retrieve(AppKeys.AWSSecretKey);
-            sortHoistedFoodTreeVariety = _config.Retrieve(AppKeys.AWSRegion);
+            excludedJurisdictions = excludedJurisdictionsString.Split(',');
+            excludedMapIds = excludedMapIdsString.Split(',');
 
-            _foodSearch.GetFoodGardensByFoodTreeVarieties(foodName, sortHoistedFoodTreeVariety,
-                excludedJurisdictions, excludedMapIds);
+            foodGardens = _foodSearch.GetFoodGardensByFoodTreeVarieties(foodName, 
+                sortHoistedFoodTreeVariety, excludedJurisdictions, excludedMapIds);
 
-            return foodName;
+            return foodGardens;
         }
 
         // POST api/values

@@ -13,7 +13,8 @@ namespace PayByPhone.TestAssignment.FoodTrees.Services
         private string _awsRegion;
         private string _awsSecretKey;
 
-        public FoodSearchAmazonDynamo(string awsAccessKey, string awsSecretKey, string awsRegion)
+        public FoodSearchAmazonDynamo(string awsAccessKey, string awsSecretKey, 
+                                      string awsRegion)
         {
             _awsAccessKey = awsAccessKey;
             _awsSecretKey = awsSecretKey;
