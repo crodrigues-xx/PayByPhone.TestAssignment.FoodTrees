@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 
 using PayByPhone.TestAssignment.FoodTrees.Models;
+using Amazon.DynamoDBv2;
+using Amazon.DynamoDBv2.DocumentModel;
 
 namespace PayByPhone.TestAssignment.FoodTrees.Services
 {
@@ -28,6 +30,9 @@ namespace PayByPhone.TestAssignment.FoodTrees.Services
         {
             IList<FoodGarden> foodGardens = null;
 
+            AmazonDynamoDBClient client = new AmazonDynamoDBClient();
+            Table table = Table.LoadTable(client, "hire-foodtrees");
+            Document item = table.GetItem("FA085", null);
 
             return foodGardens;
         }
